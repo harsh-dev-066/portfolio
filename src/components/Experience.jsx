@@ -18,7 +18,7 @@ const Experience = () => {
     },
     {
       id: 3,
-      title: "ORS Portal",
+      title: "Delicon Consulting Services",
       description:
         "Full stack development of an online B2B and B2C MERN stack app.",
       designation: "Web Developer Intern",
