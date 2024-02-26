@@ -13,14 +13,14 @@ const Experience = () => {
       id: 2,
       title: "Chattel Technolgies",
       description:
-        "Full stack development for various projects of the company.",
+        "The Architecture and implementation of various full stack applications of the company also contributed to the improvement of the company's software development process with optimization for high scalability.",
       designation: "Web Developer Intern",
     },
     {
       id: 3,
       title: "ORS Portal",
       description:
-        "Full stack development of an online B2B and B2C MERN stack app.",
+        "Full stack development of an online B2B and B2C MERN stack app with enhanced UI and cutting-edge features, focusing on elevating user experience. Contributed to code quality, organization, adhering to best practices for robust and scalable.",
       designation: "Web Developer Intern",
     },
   ];

@@ -6,7 +6,7 @@ import javascript from "../assets/javascript.png";
 import reactImage from "../assets/react.png";
 import github from "../assets/github.png";
 // import nextjs from "../assets/nextjs.png";
-// import nodejs from "../assets/nodejs.png";
+import nodejs from "../assets/nodejs.png";
 // import tailwind from "../assets/tailwind.png";
 
 const Skills = () => {
@@ -37,6 +37,12 @@ const Skills = () => {
     },
     {
       id: 5,
+      src: nodejs,
+      title: "Node",
+      style: "shadow-green-600",
+    },
+    {
+      id: 6,
       src: github,
       title: "GitHub",
       style: "shadow-gray-400",
