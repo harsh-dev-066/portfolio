@@ -31,7 +31,7 @@ const Experience = () => {
       className="bg-gradient-to-b from-black to-gray-800 w-full text-white"
       style={{ paddingTop: "30px" }}
     >
-      <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
+      <div className="max-w-screen-xl p-4 mx-auto flex flex-col justify-center w-full h-full">
         <div className="pb-">
           <p className="text-4xl font-bold inline border-b-4 border-gray-500">
             Experience
