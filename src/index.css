@@ -13,14 +13,26 @@
 }
 
 .profile {
-  @media screen and (max-width: 728px) {
+  @media screen and (max-width: 430px) {
     padding-bottom: 16px;
+  }
+
+  @media screen and (width: 768px) {
+    padding: 16px;
   }
 }
 
 .profile-image {
   @media screen and (max-width: 480px) {
     display: none;
+  }
+}
+
+.profile-image-mobile {
+  display: none;
+  padding: 16px 0px 8px;
+  @media screen and (max-width: 480px) {
+    display: block;
   }
 }
 

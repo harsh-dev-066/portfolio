@@ -15,6 +15,13 @@ const Home = () => {
           <h2 className="text-3xl  md:text-5xl lg:text-7xl font-bold text-white">
             I'm a Software Engineer
           </h2>
+          <div className="profile-image-mobile">
+            <img
+              src={portrait}
+              alt="my profile"
+              className="rounded-2xl mx-auto w-2/3"
+            />
+          </div>
           <p className="text-gray-500 py-4 max-w-md">
             As a Software Engineer and an avid coder, I have created features
             that have consistently resulted in bug-free product delivery.
