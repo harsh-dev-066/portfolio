@@ -11,3 +11,22 @@
     font-family: "Trebuchet MS","Lucida Sans Unicode","Lucida Grande","Lucida Sans",Arial,sans-serif;
   }
 }
+
+.profile {
+  @media screen and (max-width: 728px) {
+    padding-bottom: 16px;
+  }
+}
+
+.profile-image {
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+}
+
+.skill-list {
+  @media screen and (max-width: 480px) {
+    height: 400px;
+    overflow: auto;
+  }
+}

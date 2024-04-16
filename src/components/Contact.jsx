@@ -4,9 +4,10 @@ const Contact = () => {
   return (
     <div
       name="contact"
-      className="w-full h-screen bg-gradient-to-b from-black to-gray-800 p-4 text-white"
+      className="w-full bg-gradient-to-b from-black to-gray-800 p-4 text-white"
+      style={{ paddingTop: "80px" }}
     >
-      <div className="flex flex-col p-4 justify-center max-w-screen-xl mx-auto h-full">
+      <div className="flex flex-col p-4 justify-center max-w-screen-xl mx-auto">
         <div className="pb-8">
           <p className="text-4xl font-bold inline border-b-4 border-gray-500">
             Contact
@@ -27,7 +28,7 @@ const Contact = () => {
               className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
             />
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder="Enter your email"
               className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"

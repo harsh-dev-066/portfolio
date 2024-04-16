@@ -29,7 +29,7 @@ const Experience = () => {
     <div
       name="experience"
       className="bg-gradient-to-b from-black to-gray-800 w-full text-white"
-      style={{ paddingTop: "30px" }}
+      style={{ paddingTop: "80px" }}
     >
       <div className="max-w-screen-xl p-4 mx-auto flex flex-col justify-center w-full h-full">
         <div className="pb-">
@@ -56,7 +56,8 @@ const Experience = () => {
                     justifyContent: "center",
                   }}
                 >
-                  <span className="font-bold mr-1"> Designation - </span>
+                  <span className="font-bold mr-1"> Designation </span>{" "}
+                  <span> - </span>
                   {exp.designation}
                 </div>
                 <div className="text-gray-500 py-4 max-w-md">

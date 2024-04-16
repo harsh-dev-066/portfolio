@@ -7,11 +7,12 @@ const Home = () => {
   return (
     <div
       name="home"
-      className="h-screen w-full bg-gradient-to-b from-black via-black to-gray-800"
+      className="profile w-full lg:h-screen min-h-fit bg-gradient-to-b from-black via-black to-gray-800"
+      style={{ paddingTop: "80px" }}
     >
-      <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center h-full px-4 md:flex-row">
-        <div className="flex flex-col justify-center h-full">
-          <h2 className="text-4xl sm:text-7xl font-bold text-white">
+      <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center px-4 md:flex-row">
+        <div className="flex flex-col justify-center">
+          <h2 className="text-3xl  md:text-5xl lg:text-7xl font-bold text-white">
             I'm a Software Engineer
           </h2>
           <p className="text-gray-500 py-4 max-w-md">
@@ -40,7 +41,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div>
+        <div className="profile-image">
           <img
             src={portrait}
             alt="my profile"
