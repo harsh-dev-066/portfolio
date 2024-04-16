@@ -42,3 +42,36 @@
     overflow: auto;
   }
 }
+
+@keyframes smooth-appear {
+  to{
+    bottom: 20px;
+    opacity:1;
+  }
+}
+
+@keyframes smooth-disapear {
+  0% {
+    bottom: 20px;
+    opacity: 1;
+  }
+  60% {
+    bottom: 20px;
+    opacity: 1;
+  }
+  to{
+    bottom: 0px;
+    opacity: 0;
+  }
+}
+
+.form-info {
+  top: -40px;
+  bottom: -100%;
+  opacity:0;
+  animation: smooth-appear 1s ease forwards, smooth-disapear 3s ease forwards 400ms; /* Added smooth-disapear animation with a duration of 2s, starting after 1s delay */
+}
+
+.submit-disable {
+  background-color: rgb(71 85 105) !important;
+}
