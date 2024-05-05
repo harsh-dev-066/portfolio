@@ -56,9 +56,8 @@ const Experience = () => {
                     justifyContent: "center",
                   }}
                 >
-                  <span className="font-bold mr-1"> Designation </span>{" "}
-                  <span> - </span>
-                  {exp.designation}
+                  <span className="font-bold"> Designation </span>
+                  <span className="mx-1"> - </span> {exp.designation}
                 </div>
                 <div className="text-gray-500 py-4 max-w-md">
                   {exp.description}
