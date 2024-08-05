@@ -18,7 +18,7 @@ const Experience = () => {
     },
     {
       id: 3,
-      title: "Delicon Consulting Services",
+      title: "Delicon Consulting Services ",
       description:
         "Full stack development of an online B2B and B2C MERN stack app with enhanced UI and cutting-edge features, focusing on elevating user experience. Contributed to code quality, organization, adhering to best practices for robust and scalable.",
       designation: "Web Developer Intern",
