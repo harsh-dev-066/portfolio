@@ -1,76 +1,35 @@
 import React from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
-import { BsFillPersonLinesFill } from "react-icons/bs";
+import { FiGithub, FiLinkedin, FiMail, FiFileText } from "react-icons/fi";
+import { profile } from "../data/content";
 
-const SocialLinks = () => {
-  const links = [
-    {
-      id: 1,
-      child: (
-        <>
-          LinkedIn <FaLinkedin size={30} />
-        </>
-      ),
-      href: "https://www.linkedin.com/in/harsh-thakur-066/",
-      style: "rounded-tr-md",
-    },
-    {
-      id: 2,
-      child: (
-        <>
-          GitHub <FaGithub size={30} />
-        </>
-      ),
-      href: "https://github.com/harsh-dev-066",
-    },
-    {
-      id: 3,
-      child: (
-        <>
-          Mail <HiOutlineMail size={30} />
-        </>
-      ),
-      href: "mailto:harshthakur066@gmail.com",
-    },
-    {
-      id: 4,
-      child: (
-        <>
-          Resume <BsFillPersonLinesFill size={30} />
-        </>
-      ),
-      href: " https://tinyurl.com/29drtts7",
-      style: "rounded-br-md",
-    },
-  ];
+const links = [
+  { id: "linkedin", label: "LinkedIn", icon: FiLinkedin, href: profile.linkedin },
+  { id: "github", label: "GitHub", icon: FiGithub, href: profile.github },
+  { id: "mail", label: "Email", icon: FiMail, href: `mailto:${profile.email}` },
+  { id: "resume", label: "Resume", icon: FiFileText, href: profile.resume },
+];
 
-  return (
-    <div className="hidden lg:flex flex-col top-[35%] left-0 fixed">
-      <ul>
-        {links.map(({ id, child, href, style, download }) => (
-          <li
-            key={id}
-            className={
-              "flex justify-between items-center w-40 h-14 px-4 ml-[-100px] hover:ml-[-10px] hover:rounded-md duration-300 bg-gray-500" +
-              " " +
-              style
-            }
-          >
-            <a
-              href={href}
-              className="flex justify-between items-center w-full text-white"
-              download={download}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {child}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+/** Fixed vertical rail on the left, with a hairline running to the page edge. */
+const SocialLinks = () => (
+  <aside className="fixed bottom-0 left-6 z-40 hidden flex-col items-center gap-5 lg:flex">
+    {links.map(({ id, label, icon: Icon, href }) => (
+      <a
+        key={id}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={label}
+        title={label}
+        className="group relative text-muted transition-all duration-300 hover:-translate-y-1 hover:text-accent2"
+      >
+        <Icon size={18} />
+        <span className="glass pointer-events-none absolute left-8 top-1/2 -translate-y-1/2 translate-x-1 whitespace-nowrap rounded-lg px-2.5 py-1 text-xs opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+          {label}
+        </span>
+      </a>
+    ))}
+    <span className="mt-2 h-24 w-px bg-gradient-to-b from-hairline/30 to-transparent" />
+  </aside>
+);
 
 export default SocialLinks;

@@ -1,147 +1,90 @@
-import React from "react";
+import React, { useState } from "react";
+import { skillGroups } from "../data/content";
+import SectionHeading from "./ui/SectionHeading";
+import Reveal from "./ui/Reveal";
 
-import html from "../assets/html.png";
-import css from "../assets/css.png";
-import javascript from "../assets/javascript.png";
-import reactImage from "../assets/react.png";
-import github from "../assets/github.png";
-import sass from "../assets/sass.png";
-import nodejs from "../assets/nodejs.png";
-import typescript from "../assets/typescript.png";
-import mongodb from "../assets/mongodb.png";
-import postgresql from "../assets/postgresql.png";
-import nextjs from "../assets/nextjs.png";
-import graphql from "../assets/graphql.png";
-import tailwind from "../assets/tailwind.png";
-import prisma from "../assets/prisma.png";
-import docker from "../assets/docker.png";
-// import mysql from '../assets/mysql.png'
-// import websocket from '../assets/websocket.png'
+const ALL = "all";
+
+const accentRing = {
+  accent: "from-accent/25 to-accent/5 text-accent",
+  accent2: "from-accent2/25 to-accent2/5 text-accent2",
+  accent3: "from-accent3/25 to-accent3/5 text-accent3",
+};
 
 const Skills = () => {
-  const techs = [
-    {
-      id: 4,
-      src: reactImage,
-      title: "React",
-      style: "shadow-blue-600",
-    },
-    {
-      id: 22,
-      src: nextjs,
-      title: "Next.js",
-      style: "shadow-slate-600",
-    },
-    {
-      id: 3,
-      src: javascript,
-      title: "JavaScript",
-      style: "shadow-yellow-500",
-    },
-    {
-      id: 7,
-      src: typescript,
-      title: "TypeScript",
-      style: "shadow-blue-500",
-    },
-    {
-      id: 5,
-      src: nodejs,
-      title: "Node.js",
-      style: "shadow-green-600",
-    },
-    {
-      id: 1,
-      src: html,
-      title: "HTML 5",
-      style: "shadow-orange-500",
-    },
-    {
-      id: 2,
-      src: css,
-      title: "CSS 3",
-      style: "shadow-blue-500",
-    },
-    {
-      id: 8,
-      src: sass,
-      title: "Sass",
-      style: "shadow-pink-600",
-    },
-    {
-      id: 12,
-      src: tailwind,
-      title: "Tailwind",
-      style: "shadow-teal-500",
-    },
-    {
-      id: 11,
-      src: graphql,
-      title: "GraphQL",
-      style: "shadow-pink-600",
-    },
-
-    {
-      id: 9,
-      src: postgresql,
-      title: "PostgreSQL",
-      style: "shadow-blue-600",
-    },
-    {
-      id: 10,
-      src: mongodb,
-      title: "MongoDB",
-      style: "shadow-green-600",
-    },
-    {
-      id: 15,
-      src: prisma,
-      title: "Prisma ORM",
-      style: "shadow-blue-400",
-    },
-    {
-      id: 6,
-      src: github,
-      title: "GitHub",
-      style: "shadow-gray-400",
-    },
-    {
-      id: 16,
-      src: docker,
-      title: "Docker",
-      style: "shadow-blue-400",
-    },
-  ];
+  const [filter, setFilter] = useState(ALL);
+  const groups = filter === ALL ? skillGroups : skillGroups.filter((g) => g.id === filter);
 
   return (
-    <div
-      name="skills"
-      className="bg-gradient-to-b from-gray-800 to-black w-full pt-8"
-      style={{ paddingTop: "80px" }}
-    >
-      <div className="max-w-screen-xl mx-auto p-4 flex flex-col justify-center w-full text-white">
-        <div>
-          <p className="text-4xl font-bold border-b-4 border-gray-500 p-2 inline">
-            Skills
-          </p>
-          <p className="py-6">These are the technologies I've worked with</p>
-        </div>
+    <section id="skills" className="relative pt-12 pb-20 sm:pt-16 sm:pb-24">
+      <div className="mx-auto max-w-shell px-5 sm:px-8">
+        <SectionHeading index="03" title="Skills" subtitle="The toolkit I reach for." />
 
-        <div className="skill-list w-full grid grid-cols-2 sm:grid-cols-5 gap-8 text-center py-8 px-12 sm:px-0">
-          {techs.map(({ id, src, title, style }) => (
-            <div
-              key={id}
-              className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${style}`}
+        {/* Category filter */}
+        <Reveal delay={220}>
+          <div className="mt-10 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => setFilter(ALL)}
+              className={`chip !px-4 !py-1.5 !text-[13px] ${
+                filter === ALL ? "!border-accent/60 !bg-accent/12 !text-content" : ""
+              }`}
             >
-              <div className="h-20   flex justify-center items-center">
-                <img src={src} alt="" className="w-20 mx-auto" />
+              Everything
+            </button>
+            {skillGroups.map((group) => (
+              <button
+                key={group.id}
+                type="button"
+                onClick={() => setFilter(group.id)}
+                className={`chip !px-4 !py-1.5 !text-[13px] ${
+                  filter === group.id ? "!border-accent/60 !bg-accent/12 !text-content" : ""
+                }`}
+              >
+                {group.title}
+              </button>
+            ))}
+          </div>
+        </Reveal>
+
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          {groups.map((group, gi) => (
+            <Reveal
+              key={group.id}
+              variant="scale"
+              delay={gi * 90}
+              className={`glass card-hover rounded-2xl p-6 ${
+                groups.length % 2 === 1 && gi === groups.length - 1 ? "md:col-span-2" : ""
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className={`h-8 w-1 rounded-full bg-gradient-to-b ${
+                    accentRing[group.accent] || accentRing.accent
+                  }`}
+                />
+                <h3 className="font-display text-base font-semibold">{group.title}</h3>
+                <span className="ml-auto font-mono text-xs text-faint">
+                  {String(group.items.length).padStart(2, "0")}
+                </span>
               </div>
-              <p className="mt-4">{title}</p>
-            </div>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {group.items.map((item, i) => (
+                  <span
+                    key={item}
+                    className="chip cursor-default"
+                    style={{ transitionDelay: `${Math.min(i * 12, 200)}ms` }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

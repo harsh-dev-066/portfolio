@@ -1,73 +1,117 @@
-import React from "react";
+import React, { useState } from "react";
+import { FiChevronDown } from "react-icons/fi";
+import { experiences } from "../data/content";
+import SectionHeading from "./ui/SectionHeading";
+import Reveal from "./ui/Reveal";
 
-const Experience = () => {
-  const experiences = [
-    {
-      id: 1,
-      title: "MAD Street Den",
-      description:
-        "Created features that have consistently resulted in bug-free product delivery. working with the team, taking part in code reviews, and assisting in the resolution of challenging issues.",
-      designation: "Software Engineer",
-    },
-    {
-      id: 2,
-      title: "Chattel Technolgies",
-      description:
-        "The Architecture and implementation of various full stack applications of the company also contributed to the improvement of the company's software development process with optimization for high scalability.",
-      designation: "Web Developer Intern",
-    },
-    {
-      id: 3,
-      title: "Delicon Consulting Services ",
-      description:
-        "Full stack development of an online B2B and B2C MERN stack app with enhanced UI and cutting-edge features, focusing on elevating user experience. Contributed to code quality, organization, adhering to best practices for robust and scalable.",
-      designation: "Web Developer Intern",
-    },
-  ];
+const ExperienceCard = ({ exp, index, expanded, onToggle }) => {
+  const hasDetail = exp.highlights.length > 0;
 
   return (
-    <div
-      name="experience"
-      className="bg-gradient-to-b from-black to-gray-800 w-full text-white"
-      style={{ paddingTop: "80px" }}
-    >
-      <div className="max-w-screen-xl p-4 mx-auto flex flex-col justify-center w-full h-full">
-        <div className="pb-">
-          <p className="text-4xl font-bold inline border-b-4 border-gray-500">
-            Experience
-          </p>
-          <p className="py-6">Here are some of my experiences</p>
+    <Reveal variant="right" delay={index * 120} className="relative pl-10 sm:pl-16">
+      {/* Timeline node */}
+      <span className="absolute left-0 top-7 flex h-4 w-4 -translate-x-1/2 items-center justify-center sm:left-[7px]">
+        <span
+          className={`h-3 w-3 rounded-full ring-4 ring-bg ${
+            exp.current ? "bg-accent2" : "bg-faint"
+          }`}
+        />
+        {exp.current && (
+          <span className="absolute h-3 w-3 rounded-full bg-accent2 animate-pulse-ring" />
+        )}
+      </span>
+
+      <div className="glass card-hover rounded-2xl p-6 sm:p-7">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="flex flex-wrap items-center gap-2.5">
+              <h3 className="font-display text-lg font-semibold sm:text-xl">{exp.company}</h3>
+              {exp.current && (
+                <span className="rounded-full bg-emerald-500/12 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-400 ring-1 ring-emerald-500/30">
+                  Current
+                </span>
+              )}
+            </div>
+            <p className="mt-1 text-sm font-medium text-accent2">{exp.role}</p>
+          </div>
+          <span className="font-mono text-xs text-faint whitespace-nowrap">{exp.period}</span>
         </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0">
-          {experiences.map((exp) => (
+        <p className="mt-4 text-sm leading-relaxed text-muted">{exp.blurb}</p>
+
+        {hasDetail && (
+          <>
+            {/* Grid-rows trick animates height without measuring the content */}
             <div
-              key={exp.id}
-              className="shadow-md shadow-yellow-500 rounded-lg text-center p-2"
+              className="grid transition-all duration-500 ease-smooth"
+              style={{ gridTemplateRows: expanded ? "1fr" : "0fr" }}
             >
-              <span className=" font-bold text-lg capitalize">{exp.title}</span>
-              <div className="flex flex-col items-start justify-start p-2">
-                <div
-                  style={{
-                    marginBottom: "5px",
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span className="font-bold"> Designation </span>
-                  <span className="mx-1"> - </span> {exp.designation}
-                </div>
-                <div className="text-gray-500 py-4 max-w-md">
-                  {exp.description}
-                </div>
+              <div className="overflow-hidden">
+                <ul className="mt-5 space-y-3 border-l border-hairline/10 pl-5">
+                  {exp.highlights.map((point) => (
+                    <li key={point} className="relative text-sm leading-relaxed text-muted">
+                      <span className="absolute -left-[21px] top-2 h-1.5 w-1.5 rounded-full bg-accent/60" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
+
+            <button
+              type="button"
+              onClick={onToggle}
+              aria-expanded={expanded}
+              className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-accent2 transition-colors hover:text-accent"
+            >
+              {expanded ? "Show less" : `Show ${exp.highlights.length} highlights`}
+              <FiChevronDown
+                size={14}
+                className={`transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+              />
+            </button>
+          </>
+        )}
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {exp.stack.map((tech) => (
+            <span key={tech} className="chip font-mono !text-[11px]">
+              {tech}
+            </span>
           ))}
         </div>
       </div>
-    </div>
+    </Reveal>
+  );
+};
+
+const Experience = () => {
+  // First (current) role starts open; the rest collapse to keep the page scannable.
+  const [openId, setOpenId] = useState(experiences[0].id);
+
+  return (
+    <section id="experience" className="relative pt-12 pb-20 sm:pt-16 sm:pb-24">
+      <div className="mx-auto max-w-shell px-5 sm:px-8">
+        <SectionHeading index="02" title="Experience" subtitle="Where I've been building." />
+
+        <div className="relative mt-14">
+          {/* Vertical rail */}
+          <div className="absolute left-0 top-2 bottom-2 w-px bg-gradient-to-b from-accent2/60 via-accent/30 to-transparent sm:left-[7px]" />
+
+          <div className="space-y-6">
+            {experiences.map((exp, i) => (
+              <ExperienceCard
+                key={exp.id}
+                exp={exp}
+                index={i}
+                expanded={openId === exp.id}
+                onToggle={() => setOpenId((prev) => (prev === exp.id ? null : exp.id))}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
