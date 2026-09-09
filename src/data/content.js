@@ -9,7 +9,8 @@ export const profile = {
   location: "Bengaluru, India",
   email: "harshthakur066@gmail.com",
   phone: "+91 97172 09558",
-  resume: "/Harsh-Thakur-Resume.pdf",
+  resume:
+    "https://drive.google.com/file/d/1aFOJIEgpQoE7YZ5bLmRctXIPXQJPQgVn/view?usp=sharing",
   github: "https://github.com/harsh-dev-066",
   linkedin: "https://www.linkedin.com/in/harsh-thakur-066/",
   tagline: "I build products that scale.",
