@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FiArrowDownRight, FiMapPin } from "react-icons/fi";
-import portrait from "../assets/profile-2.png";
+import portrait from "../assets/profile-2.jpg";
+import portraitLqip from "../assets/profile-2-lqip.jpg";
 import { profile, marqueeStack } from "../data/content";
+import BlurUpImage from "./ui/BlurUpImage";
 
 const ROLES = [
   "Senior Software Engineer",
@@ -123,11 +125,12 @@ const Home = () => {
             }}
           />
           <div className="glass relative overflow-hidden rounded-[1.75rem] p-2">
-            <img
+            <BlurUpImage
               src={portrait}
+              placeholder={portraitLqip}
               alt="Harsh Thakur"
-              loading="eager"
-              className="w-full rounded-[1.4rem] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.03]"
+              className="rounded-[1.4rem]"
+              imgClassName="rounded-[1.4rem] transition-transform duration-700 ease-smooth hover:scale-[1.03]"
             />
           </div>
 
