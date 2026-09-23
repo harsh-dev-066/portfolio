@@ -2,6 +2,7 @@ import fashionQ from "../assets/portfolio/fashionQ.png";
 import ors from "../assets/portfolio/ors.png";
 import vidco from "../assets/portfolio/vidco.png";
 import playCanvas from "../assets/portfolio/play-canvas.png";
+import opshub from "../assets/portfolio/opshub.png";
 
 export const profile = {
   name: "Harsh Thakur",
@@ -129,6 +130,16 @@ export const marqueeStack = [
 ];
 
 export const projects = [
+  {
+    id: "opshub",
+    title: "OpsHub",
+    image: opshub,
+    year: "2026",
+    desc: "A property-operations console with dashboard KPIs, URL-synced filters, ticket workflows and role-gated UI — React 19, TanStack and MSW.",
+    tags: ["React 19", "TypeScript", "TanStack", "Vite"],
+    demo: "https://opshubportal.netlify.app/dashboard",
+    code: "https://github.com/harsh-dev-066/OpsHub",
+  },
   {
     id: "fashionq",
     title: "fashionQ",
